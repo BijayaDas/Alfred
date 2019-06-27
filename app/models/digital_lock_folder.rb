@@ -1,0 +1,2 @@
+class DigitalLockFolder < ApplicationRecord
+end

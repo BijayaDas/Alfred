@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Automated Tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @automated_tasks.each do |automated_task| %>
+      <tr>
+        <td><%= link_to 'Show', automated_task %></td>
+        <td><%= link_to 'Edit', edit_automated_task_path(automated_task) %></td>
+        <td><%= link_to 'Destroy', automated_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Automated Task', new_automated_task_path %>

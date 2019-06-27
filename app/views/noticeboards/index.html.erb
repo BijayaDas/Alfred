@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Noticeboards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @noticeboards.each do |noticeboard| %>
+      <tr>
+        <td><%= link_to 'Show', noticeboard %></td>
+        <td><%= link_to 'Edit', edit_noticeboard_path(noticeboard) %></td>
+        <td><%= link_to 'Destroy', noticeboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Noticeboard', new_noticeboard_path %>

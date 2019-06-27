@@ -1,0 +1,17 @@
+<%= form_with(model: onelogin, local: true) do |form| %>
+  <% if onelogin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(onelogin.errors.count, "error") %> prohibited this onelogin from being saved:</h2>
+
+      <ul>
+      <% onelogin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

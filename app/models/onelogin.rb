@@ -1,0 +1,2 @@
+class Onelogin < ApplicationRecord
+end

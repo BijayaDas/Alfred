@@ -1,0 +1,2 @@
+class AutomatedTask < ApplicationRecord
+end

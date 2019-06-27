@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Digital Lockers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @digital_lockers.each do |digital_locker| %>
+      <tr>
+        <td><%= link_to 'Show', digital_locker %></td>
+        <td><%= link_to 'Edit', edit_digital_locker_path(digital_locker) %></td>
+        <td><%= link_to 'Destroy', digital_locker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Digital Locker', new_digital_locker_path %>

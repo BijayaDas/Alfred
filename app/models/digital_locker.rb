@@ -1,0 +1,2 @@
+class DigitalLocker < ApplicationRecord
+end
