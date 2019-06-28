@@ -13,4 +13,14 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require shared/jquery.min
+//= require shared/popper.min
+//= require shared/bootstrap.min
+//= require shared/jquery.slimscroll
+//= require shared/waves
+//= require shared/sidebarmenu
+//= require shared/sticky-kit.min
+//= require shared/jquery.sparkline.min
+//= require shared/custom.min
+//= require shared/jQuery.style.switcher
 //= require_tree .
