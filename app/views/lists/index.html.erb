@@ -1,25 +1,53 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Lists</h4>
+        <h6 class="card-subtitle"></h6>
+        <%= link_to 'New Automated Task', new_list_path, class: "btn btn-primary btn-rounded m-t-10 float-right" %>
 
-<h1>Lists</h1>
-
-<table>
-  <thead>
-    <tr>
+        <div class="table-responsive">
+          <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list table-bordered toggle-arrow-tiny" data-paging="true" data-paging-size="7" data-toggle-column="first">
+            <thead>
+              <tr>
+                <th>Name</th>
+      <th>Detailed plan</th>
+      <th>List type</th>
+      <th>Status</th>
+      <th>Deadline</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Durration</th>
       <th colspan="3"></th>
-    </tr>
-  </thead>
+              </tr>
+            </thead>
+            <tbody>
+              <% @lists.each do |list| %>
+                <tr>
+                  <td><%= list.name %></td>
+        <td><%= list.detailed_plan %></td>
+        <td><%= list.list_type %></td>
+        <td><%= list.status %></td>
+        <td><%= list.deadline %></td>
+        <td><%= list.start_date %></td>
+        <td><%= list.end_date %></td>
+        <td><%= list.durration %></td>
+                  <td>
+                    <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_list_path(list), class: "btn btn-info btn-circle" %> 
+                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, list, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-circle" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-  <tbody>
-    <% @lists.each do |list| %>
-      <tr>
-        <td><%= link_to 'Show', list %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New List', new_list_path %>
+
+

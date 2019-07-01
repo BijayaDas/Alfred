@@ -1,4 +1,4 @@
-<%= form_with(model: noticeboard, local: true) do |form| %>
+<%= form_with(model: noticeboard, local: true, class: "m-t-40") do |form| %>
   <% if noticeboard.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(noticeboard.errors.count, "error") %> prohibited this noticeboard from being saved:</h2>
@@ -6,12 +6,66 @@
       <ul>
       <% noticeboard.errors.full_messages.each do |message| %>
         <li><%= message %></li>
+          <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="form-group">
+  <h5>Heading<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :heading, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <h5>Content<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :content, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+
+<div class="form-group">
+    <h5>Notice Types <span class="text-danger">*</span></h5>
+    <div class="controls">
+        <%= form.select :notice_type, options_for_select(Noticeboard.notice_types.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+    </div>
+</div>
+
+<div class="form-group">
+    <h5>Status <span class="text-danger">*</span></h5>
+    <div class="controls">
+        <%= form.select :status, options_for_select(Noticeboard.statuses.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+    </div>
+</div>
+
+<div class="form-group">
+    <h5>Enter Expiry Date <span class="text-danger">*</span></h5>
+    <div class="controls">
+      <%= form.datetime_select :expiry_date, class: "form-control", placeholder: "MM/DD/YYYY", 
+        "data-validation-regex-regex"=>"([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})", "data-validation-regex-message"=>"Enter Valid Date" %>
+</div>
+
+<div class="form-group">
+  <h5>reminder_frequency<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.number_field :reminder_frequency, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+    <div class="form-group">
+        <h5>Detailed Plan <span class="text-danger">*</span></h5>
+        <div class="controls">
+          <%= form.text_area :detailed_plan, class: "form-control", required: true, placeholder: "Textarea text" %>
+        </div>
+    </div>
+
+   <div class="text-xs-right">
+    <%= form.button 'submit', class: "btn btn-info" %>
+    <%= link_to 'Cancel', noticeboards_path, class: "btn btn-inverse", style: "a" %>
   </div>
 <% end %>
+
+

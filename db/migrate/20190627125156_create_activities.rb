@@ -8,7 +8,7 @@ class CreateActivities < ActiveRecord::Migration[5.2]
       t.datetime :time_ended
       t.integer :duration
       t.string :excuse
-      t.string :status #enum
+      t.integer :status #enum
       t.timestamps     
     end
   end

@@ -1,25 +1,53 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Activities</h4>
+        <h6 class="card-subtitle"></h6>
+        <%= link_to 'New Automated Task', new_activity_path, class: "btn btn-primary btn-rounded m-t-10 float-right" %>
 
-<h1>Activities</h1>
-
-<table>
-  <thead>
-    <tr>
+        <div class="table-responsive">
+          <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list table-bordered toggle-arrow-tiny" data-paging="true" data-paging-size="7" data-toggle-column="first">
+            <thead>
+              <tr>
+                      <th>Activity date</th>
+      <th>Content</th>
+      <th>Activity type</th>
+      <th>Time started</th>
+      <th>Time ended</th>
+      <th>Duration</th>
+      <th>Excuse</th>
+      <th>Status</th>
       <th colspan="3"></th>
-    </tr>
-  </thead>
+              </tr>
+            </thead>
+            <tbody>
+              <% @activities.each do |activity| %>
+                <tr>
+                  <td><%= activity.activity_date %></td>
+        <td><%= activity.content %></td>
+        <td><%= activity.activity_type %></td>
+        <td><%= activity.time_started %></td>
+        <td><%= activity.time_ended %></td>
+        <td><%= activity.duration %></td>
+        <td><%= activity.excuse %></td>
+        <td><%= activity.status %></td>
+                  <td>
+                    <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_activity_path(activity), class: "btn btn-info btn-circle" %> 
+                    <%= link_to '<i class="fa fa-trash"></i>'.html_safe, activity, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-circle" %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
 
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Activity', new_activity_path %>
+
+

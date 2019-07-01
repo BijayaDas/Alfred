@@ -1,3 +1,3 @@
 class Onelogin < ApplicationRecord
-    enum status: [ :pending, :inprogress, :failed, :completed, :aborted, :archieved ]
+    enum status: [ :Pending, :Inprogress, :Failed, :Completed, :Aborted, :Archieved ]
 end

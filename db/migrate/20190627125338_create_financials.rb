@@ -4,9 +4,9 @@ class CreateFinancials < ActiveRecord::Migration[5.2]
       t.string :header
       t.text :content
       t.datetime :transaction_date
-      t.string :tag #enum
-      t.string :finance_type #enum
-      t.string :status #enum
+      t.integer :tag #enum
+      t.integer :finance_type #enum
+      t.integer :status #enum
       t.integer :annual_growth_perventage
       t.timestamps
     end

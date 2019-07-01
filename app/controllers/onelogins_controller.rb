@@ -69,6 +69,6 @@ class OneloginsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def onelogin_params
-      params.fetch(:onelogin, {})
+      params.require(:onelogin).permit(:application_name, :url, :username, :password, :status, :additional_info)
     end
 end

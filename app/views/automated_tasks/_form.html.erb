@@ -1,4 +1,4 @@
-<%= form_with(model: automated_task, local: true) do |form| %>
+<%= form_with(model: automated_task, local: true, class: "m-t-40") do |form| %>
   <% if automated_task.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(automated_task.errors.count, "error") %> prohibited this automated_task from being saved:</h2>
@@ -6,12 +6,57 @@
       <ul>
       <% automated_task.errors.full_messages.each do |message| %>
         <li><%= message %></li>
+          <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="form-group">
+  <h5>Task Name<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :task_name, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <h5>Task Type<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :task_type, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <h5>Frequency<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.number_field :frequency, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <h5>Attempts<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.number_field :attempts, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+    <h5>Enter Scheduled Date<span class="text-danger">*</span></h5>
+    <div class="controls">
+      <%= form.datetime_select :scheduled_date, class: "form-control", placeholder: "MM/DD/YYYY", 
+        "data-validation-regex-regex"=>"([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})", "data-validation-regex-message"=>"Enter Valid Date" %>
+</div>
+
+<div class="form-group">
+    <h5>Status <span class="text-danger">*</span></h5>
+    <div class="controls">
+        <%= form.select :status, options_for_select(AutomatedTask.statuses.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+    </div>
+</div>
+
+   <div class="text-xs-right">
+    <%= form.button 'submit', class: "btn btn-info" %>
+    <%= link_to 'Cancel', automated_tasks_path, class: "btn btn-inverse", style: "a" %>
   </div>
 <% end %>
+

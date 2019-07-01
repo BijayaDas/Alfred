@@ -1,4 +1,4 @@
-<%= form_with(model: onelogin, local: true) do |form| %>
+<%= form_with(model: onelogin, local: true, class: "m-t-40") do |form| %>
   <% if onelogin.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(onelogin.errors.count, "error") %> prohibited this onelogin from being saved:</h2>
@@ -6,12 +6,60 @@
       <ul>
       <% onelogin.errors.full_messages.each do |message| %>
         <li><%= message %></li>
+          <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="form-group">
+  <h5>Application name<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :application_name, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+ 
+<div class="form-group">
+    <h5>Enter URL <span class="text-danger">*</span></h5>
+    <div class="controls">
+        <%= form.text_field :url, class: "form-control", required: "true", placeholder: "Add URL", "data-validation-regex-regex"=>"((http[s]?|ftp[s]?):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*", "data-validation-regex-message"=>"Only Valid URL's" %>
+    </div>
+</div>
+
+
+<div class="form-group">
+  <h5>Username<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :username, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <h5>Password<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :password, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+    <h5>Status <span class="text-danger">*</span></h5>
+    <div class="controls">
+        <%= form.select :status, options_for_select(Onelogin.statuses.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+    </div>
+</div>
+
+
+    <div class="form-group">
+        <h5>Additional Info <span class="text-danger">*</span></h5>
+        <div class="controls">
+          <%= form.text_area :additional_info, class: "form-control", required: true, placeholder: "Textarea text" %>
+        </div>
+    </div>
+
+   <div class="text-xs-right">
+    <%= form.button 'submit', class: "btn btn-info" %>
+    <%= link_to 'Cancel', onelogins_path, class: "btn btn-inverse", style: "a" %>
   </div>
 <% end %>
+

@@ -1,7 +1,7 @@
 class CreateActivityTypes < ActiveRecord::Migration[5.2]
   def change
     create_table :activity_types do |t|
-      t.string :activity_type #enum
+      t.integer :activity_type #enum
       t.string :reason_started
       t.string :days
       t.integer :frequency

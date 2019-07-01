@@ -1,4 +1,4 @@
-<%= form_with(model: financial, local: true) do |form| %>
+<%= form_with(model: financial, local: true, class: "m-t-40") do |form| %>
   <% if financial.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(financial.errors.count, "error") %> prohibited this financial from being saved:</h2>
@@ -6,12 +6,57 @@
       <ul>
       <% financial.errors.full_messages.each do |message| %>
         <li><%= message %></li>
+          <div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="form-group">
+  <h5>Heading<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.text_field :header, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+  <div class="form-group">
+    <h5>Description<span class="text-danger">*</span></h5>
+    <div class="controls">
+      <%= form.text_field :content, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+    </div>
+  </div>
+
+<div class="form-group">
+  <h5>Tag<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.select :tag, options_for_select(Financial.tags.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+  </div>
+</div>
+
+<div class="form-group">
+  <h5>Finance Type<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.number_field :finance_type, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <h5>Annual Geowth %<span class="text-danger">*</span></h5>
+  <div class="controls">
+    <%= form.number_field :annual_growth_perventage, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
+  </div>
+</div>
+
+<div class="form-group">
+    <h5>Status <span class="text-danger">*</span></h5>
+    <div class="controls">
+        <%= form.select :status, options_for_select(Financial.statuses.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+    </div>
+</div>
+
+   <div class="text-xs-right">
+    <%= form.button 'submit', class: "btn btn-info" %>
+    <%= link_to 'Cancel', financials_path, class: "btn btn-inverse", style: "a" %>
   </div>
 <% end %>
+
