@@ -69,6 +69,6 @@ class AutomatedTasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def automated_task_params
-      params.fetch(:automated_task, {})
+      params.fetch(:automated_task, {}).permit!
     end
 end

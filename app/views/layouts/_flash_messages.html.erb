@@ -1,0 +1,18 @@
+<% if flash.present? %>
+   <script>
+    $(function() {
+        "use strict";
+        <% flash.each do |key, value| %>
+            $.toast({
+                heading: '<%= key.humanize %>',
+                text: '<%= value %>',
+                position: 'top-right',
+                loaderBg:'#ff6849',
+                icon: '<%= (key == 'danger') ? "error" : key %>',
+                hideAfter: 5000,
+                stack: 6
+            });
+        <% end %>
+    });
+   </script>
+<% end %>

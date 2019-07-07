@@ -69,6 +69,6 @@ class DigitalLockersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def digital_locker_params
-      params.fetch(:digital_locker, {})
+      params.fetch(:digital_locker, {}).permit!
     end
 end

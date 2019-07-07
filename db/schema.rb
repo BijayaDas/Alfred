@@ -18,19 +18,19 @@ ActiveRecord::Schema.define(version: 2019_06_27_140225) do
   create_table "activities", force: :cascade do |t|
     t.datetime "activity_date"
     t.text "content"
-    t.bigint "useactivity_type_id"
+    t.bigint "activity_type_id"
     t.datetime "time_started"
     t.datetime "time_ended"
     t.integer "duration"
     t.string "excuse"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["useactivity_type_id"], name: "index_activities_on_useactivity_type_id"
+    t.index ["activity_type_id"], name: "index_activities_on_activity_type_id"
   end
 
   create_table "activity_types", force: :cascade do |t|
-    t.string "activity_type"
+    t.integer "activity_type"
     t.string "reason_started"
     t.string "days"
     t.integer "frequency"
@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 2019_06_27_140225) do
 
   create_table "automated_tasks", force: :cascade do |t|
     t.string "task_name"
-    t.string "task_type"
+    t.integer "task_type"
     t.datetime "scheduled_date"
-    t.string "status"
+    t.integer "status"
     t.integer "frequency"
     t.integer "attempts"
     t.datetime "created_at", null: false
@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(version: 2019_06_27_140225) do
     t.string "header"
     t.text "content"
     t.datetime "transaction_date"
-    t.string "tag"
-    t.string "finance_type"
-    t.string "status"
+    t.integer "tag"
+    t.integer "finance_type"
+    t.integer "status"
     t.integer "annual_growth_perventage"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -85,15 +85,15 @@ ActiveRecord::Schema.define(version: 2019_06_27_140225) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "number_of_milestones"
-    t.string "tag"
-    t.string "status"
+    t.integer "tag"
+    t.integer "status"
   end
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.string "detailed_plan"
-    t.string "list_type"
-    t.string "status"
+    t.integer "list_type"
+    t.integer "status"
     t.datetime "deadline"
     t.datetime "start_date"
     t.datetime "end_date"
@@ -105,8 +105,8 @@ ActiveRecord::Schema.define(version: 2019_06_27_140225) do
   create_table "milestones", force: :cascade do |t|
     t.string "heading"
     t.text "description"
-    t.string "tag"
-    t.string "status"
+    t.integer "tag"
+    t.integer "status"
     t.bigint "goal_id"
     t.integer "milestone_serial"
     t.datetime "start_date"
@@ -117,10 +117,10 @@ ActiveRecord::Schema.define(version: 2019_06_27_140225) do
   create_table "noticeboards", force: :cascade do |t|
     t.string "heading"
     t.string "content"
-    t.string "notice_type"
+    t.integer "notice_type"
     t.integer "reminder_frequency"
     t.date "expiry_date"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_06_27_140225) do
     t.string "username"
     t.string "password"
     t.text "additional_info"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

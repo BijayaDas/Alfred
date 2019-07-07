@@ -22,51 +22,45 @@
 <div class="form-group">
     <h5>Status <span class="text-danger">*</span></h5>
     <div class="controls">
-        <%= form.select :list_type, options_for_select(List.list_types.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+        <%= form.select :list_type, options_for_select(List.list_types.keys.to_a, class: 'form-control'), {}, {class: "form-control selectpicker", "data-style"=>"btn-info btn-outline-info"} %>
     </div>
 </div>
 
 <div class="form-group">
     <h5>Status <span class="text-danger">*</span></h5>
     <div class="controls">
-        <%= form.select :status, options_for_select(List.statuses.keys.to_a, class: 'form-control'), {}, {class: "form-control"} %>
+        <%= form.select :status, options_for_select(List.statuses.keys.to_a, class: 'form-control'), {}, {class: "form-control selectpicker", "data-style"=>"btn-info btn-outline-info"} %>
     </div>
 </div>
 
 <div class="form-group">
     <h5>Enter Deadline <span class="text-danger">*</span></h5>
     <div class="controls">
-      <%= form.datetime_select :deadline, class: "form-control", placeholder: "MM/DD/YYYY", 
+      <%= form.text_field :deadline, class: "form-control mdatetimepicker col-md-6", id: "mdatetimepicker3", placeholder: "MM/DD/YYYY", 
         "data-validation-regex-regex"=>"([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})", "data-validation-regex-message"=>"Enter Valid Date" %>
 </div>
 
 <div class="form-group">
     <h5>Enter start_date <span class="text-danger">*</span></h5>
     <div class="controls">
-      <%= form.datetime_select :start_date, class: "form-control", placeholder: "MM/DD/YYYY", 
+      <%= form.text_field :start_date, class: "form-control mdatetimepicker col-md-6", id: "mdatetimepicker1", placeholder: "MM/DD/YYYY", 
         "data-validation-regex-regex"=>"([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})", "data-validation-regex-message"=>"Enter Valid Date" %>
 </div>
 
 <div class="form-group">
     <h5>Enter end_date <span class="text-danger">*</span></h5>
     <div class="controls">
-      <%= form.datetime_select :end_date, class: "form-control", placeholder: "MM/DD/YYYY", 
+      <%= form.text_field :end_date, class: "form-control mdatetimepicker col-md-6", id: "mdatetimepicker2", placeholder: "MM/DD/YYYY", 
         "data-validation-regex-regex"=>"([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})", "data-validation-regex-message"=>"Enter Valid Date" %>
 </div>
 
-<div class="form-group">
-  <h5>Durration<span class="text-danger">*</span></h5>
-  <div class="controls">
-    <%= form.number_field :durration, class: "form-control", required: "true", "data-validation-required-message" => "This field is required" %>
-  </div>
-</div>
 
-    <div class="form-group">
-        <h5>Detailed Plan <span class="text-danger">*</span></h5>
-        <div class="controls">
-          <%= form.text_area :detailed_plan, class: "form-control", required: true, placeholder: "Textarea text" %>
-        </div>
+<div class="form-group">
+    <h5>Detailed Plan <span class="text-danger">*</span></h5>
+    <div class="controls">
+      <%= form.text_area :detailed_plan, class: "form-control summernote", required: true, placeholder: "Textarea text" %>
     </div>
+</div>
 
    <div class="text-xs-right">
     <%= form.button 'submit', class: "btn btn-info" %>

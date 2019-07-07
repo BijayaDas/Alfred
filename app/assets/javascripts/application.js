@@ -10,12 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
-//= require turbolinks
+//= require jquery
 //= require shared/jquery.min
 //= require shared/popper.min
 //= require shared/bootstrap.min
+//= require rails-ujs
+//= require jquery.turbolinks
 //= require shared/jquery.slimscroll
 //= require shared/waves
 //= require shared/sidebarmenu
@@ -23,4 +24,8 @@
 //= require shared/jquery.sparkline.min
 //= require shared/custom.min
 //= require shared/jQuery.style.switcher
+//= require plugins/moment/moment
+//= require plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker
+//= require plugins/summernote/summernote-bs4.min
 //= require_tree .
+//= require turbolinks

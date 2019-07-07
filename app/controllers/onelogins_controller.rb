@@ -28,9 +28,10 @@ class OneloginsController < ApplicationController
 
     respond_to do |format|
       if @onelogin.save
-        format.html { redirect_to @onelogin, notice: 'Onelogin was successfully created.' }
+        format.html { redirect_to @onelogin, success: "Onelogin was successfully created."}
         format.json { render :show, status: :created, location: @onelogin }
       else
+        flash[:error] = @onelogin.errors
         format.html { render :new }
         format.json { render json: @onelogin.errors, status: :unprocessable_entity }
       end
@@ -42,10 +43,10 @@ class OneloginsController < ApplicationController
   def update
     respond_to do |format|
       if @onelogin.update(onelogin_params)
-        format.html { redirect_to @onelogin, notice: 'Onelogin was successfully updated.' }
+        format.html { redirect_to @onelogin, warning: 'Onelogin was successfully updated.' }
         format.json { render :show, status: :ok, location: @onelogin }
       else
-        format.html { render :edit }
+        format.html { render :edit, error: @onelogin.errors }
         format.json { render json: @onelogin.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +57,7 @@ class OneloginsController < ApplicationController
   def destroy
     @onelogin.destroy
     respond_to do |format|
-      format.html { redirect_to onelogins_url, notice: 'Onelogin was successfully destroyed.' }
+      format.html { redirect_to onelogins_url, danger: "Onelogin was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -69,6 +69,6 @@ class FinancialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def financial_params
-      params.fetch(:financial, {})
+      params.fetch(:financial, {}).permit!
     end
 end

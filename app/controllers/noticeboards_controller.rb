@@ -69,6 +69,7 @@ class NoticeboardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def noticeboard_params
-      params.fetch(:noticeboard, {})
+      params.fetch(:noticeboard, {}).permit!
+      # params.require(:onelogin).permit(:application_name, :url, :username, :password, :status, :additional_info)
     end
 end
